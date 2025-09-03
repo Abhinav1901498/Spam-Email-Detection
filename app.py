@@ -5,9 +5,7 @@ from sklearn.naive_bayes import MultinomialNB
 from sklearn.pipeline import Pipeline
 import pandas as pd
 
-# -------------------------------
-# Sample Dataset
-# -------------------------------
+ 
 data = {
     'text': [
         'Win a free iPhone now',
@@ -21,9 +19,7 @@ data = {
 }
 df = pd.DataFrame(data)
 
-# -------------------------------
-# Build and Train Pipeline
-# -------------------------------
+ 
 clf = Pipeline([
     ('vectorizer', CountVectorizer()),
     ('nb', MultinomialNB())
@@ -31,19 +27,17 @@ clf = Pipeline([
 clf.fit(df['text'], df['label'])
 print("Pipeline trained successfully!")
 
-# -------------------------------
-# Flask App with absolute template folder
-# -------------------------------
+ 
 base_dir = os.path.dirname(os.path.abspath(__file__))
 template_dir = os.path.join(base_dir, "templates")
 app = Flask(__name__, template_folder=template_dir)
 
-# Debug prints to check folder structure
+ 
 print("Current working directory:", os.getcwd())
 print("Files in current directory:", os.listdir())
 print("Flask template folder:", app.template_folder)
 
-# Optional: check if templates folder exists
+ 
 if os.path.exists(template_dir):
     print("Template folder exists:", True)
     print("Files in template folder:", os.listdir(template_dir))
@@ -51,9 +45,7 @@ else:
     print("Template folder exists:", False)
     print("Please make sure 'templates' folder exists with index.html inside it.")
 
-# -------------------------------
-# Routes
-# -------------------------------
+ 
 @app.route("/", methods=["GET", "POST"])
 def home():
     result = ""
@@ -64,8 +56,9 @@ def home():
         result = "Spam" if pred == "spam" else "Ham"
     return render_template("index.html", result=result, email_text=email_text)
 
-# -------------------------------
-# Run App
-# -------------------------------
+@app.route("/login", methods=["GET"])
+def login():
+    return render_template("login.html")
+
 if __name__ == "__main__":
     app.run(debug=True)
