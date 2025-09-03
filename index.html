@@ -1,98 +1,298 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spam Email Detector</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient( darkcyan);
-            color: #f0f0f0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-        .container {
-            background: purple;
-            backdrop-filter: blur(10px);
-            border-radius: 16px;
-            padding: 40px 30px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.4);
-            max-width: 600px;
-            width: 90%;
-            text-align: center;
-        }
-        h1 {
-            margin-bottom: 20px;
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #ffcc00;
-            letter-spacing: 1px;
-        }
-        textarea {
-            width: 100%;
-            height: 120px;
-            font-size: 20px;
-            padding: 12px;
-            border-radius: 10px;
-            border: none;
-            outline: none;
-            background: rgba(255,255,255,0.15);
-            color: #fff;
-            resize: none;
-            transition: background 0.3s ease;
-        }
-        textarea:focus {
-            background: rgba(255,255,255,0.25);
-        }
-        button {
-            padding: 12px 24px;
-            font-size: 1rem;
-            margin-top: 25px;
-            border-radius: 10px;
-            border: none;
-            background: linear-gradient(135deg, #ff9900, #ffcc00);
-            color: #000;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-        button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
-        }
-        .result {
-            margin-top: 30px;
-            font-size: 1.5rem;
-            font-weight: bold;
-            padding: 15px;
-            border-radius: 10px;
-            background: white;
-        }
-        .spam {
-            color: blue;
-        }
-        .ham {
-            color: brown;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spam Email Detection with ML</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .hero-bg {
+      background-image: url('https://blog.ip2location.com/wp-content/uploads/2024/08/ipl-aug-article-img.png');
+      background-size: cover;
+      background-position: center;
+    }
+     
+  </style>
 </head>
-<body>
-    <div class="container">
-        <h1>Spam Email Detector</h1>
-        <form method="POST">
-            <textarea name="email_text" placeholder="Enter your email text here...">{{ email_text }}</textarea><br>
-            <button type="submit">Check Spam</button>
-        </form>
+ <body class="bg-gray-100">
+<!-- Navigation Bar -->
+  <nav class="bg-pink-800 text-white text-xl py-0 px-5 flex justify-between items-center gap-4">
+    <div class="text-2xl font-bold text-black">Spam Detection</div>
+    <ul class="flex space-x-6">
+      <li><a href="#home" class="hover:bg-yellow-600 text-black font-bold">Home</a></li>
+      <li><a href="#about" class="hover:bg-yellow-600 text-black font-bold ">About</a></li>
+      <li><a href="#how-it-works" class="hover:bg-yellow-600 text-black font-bold text-xl">How It Works</a></li>
+      <li><a href="#contact" class="hover:bg-yellow-600 text-black font-bold">Contact</a></li>
+    </ul>
 
+<nav class="flex gap-5">
+    <a href="/login" class="bg-pink-600 px-4 py-2 rounded hover:bg-yellow-600 text-black text-xl">Login</a>
+     <a href="#detector" class="bg-pink-600 px-4 py-2 rounded hover:bg-yellow-600 text-black text-xl">Result</a>
+    </nav>
+    </nav>
+
+  <!-- Home Section -->
+ <section class="hero-bg flex items-center px-20 text-black" style="background-color: darkgray; height: 660px;">
+ <div class="max-w-lg">
+      <h1 class="text-5xl font-bold mb-4">Detect Spam Emails with Machine Learning</h1>
+      <p class="mb-6 text-xl">
+        Leverage advanced ML algorithms to identify and filter spam emails effectively. Protect your inbox from unwanted messages using NLP and classification techniques.
+      </p>
+      
+      <!-- Buttons -->
+      <div class="flex space-x-4 mb-6">
+        <a href="#about" class="bg-black text-white px-6 py-3 rounded hover:bg-yellow-600">Read More</a>
+        <a href="#get-started" class="bg-blue-500 text-white px-6 py-3 rounded hover:bg-yellow-600">Get Started</a>
+      </div>
+      
+      <!-- Social Icons -->
+      <div class="flex space-x-8 mt-4 px-7">
+        <a href="https://wa.me/1234567890" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" class="w-6 h-6 hover:scale-110 transition" alt="WhatsApp">
+        </a>
+        <a href="https://facebook.com" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" class="w-6 h-6 hover:scale-110 transition" alt="Facebook">
+        </a>
+        <a href="https://linkedin.com" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" class="w-6 h-6 hover:scale-110 transition" alt="LinkedIn">
+        </a>
+        <a href="https://github.com" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" class="w-6 h-6 hover:scale-110 transition" alt="GitHub">
+        </a>
+      </div>
+    </div>
+   </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-16 px-8 bg-blue-50">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-4xl font-bold mb-8 text-center">About Spam Detection </h2>
+      <p class="text-lg mb-6">
+        SpamDetect AI uses cutting-edge machine learning models to analyze email content, sender behavior, and patterns to accurately classify emails as spam or legitimate. Built with NLP techniques like TF-IDF and classifiers such as Naive Bayes or SVM.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="p-6 bg-gray-100 rounded shadow">
+          <h3 class="text-2xl font-semibold mb-4">Accurate Detection</h3>
+          <p>Our ML models achieve over 95% accuracy in spam classification.</p>
+        </div>
+        <div class="p-6 bg-gray-100 rounded shadow">
+          <h3 class="text-2xl font-semibold mb-4">Real-Time Filtering</h3>
+          <p>Integrate with your email client for instant spam filtering.</p>
+        </div>
+        <div class="p-6 bg-gray-100 rounded shadow">
+          <h3 class="text-2xl font-semibold mb-4">Customizable Rules</h3>
+          <p>Tailor the detection system to your specific needs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section id="how-it-works" class="py-16 px-8 bg-blue-50">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-4xl font-bold mb-8 text-center">How It Works</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div>
+          <h3 class="text-2xl font-semibold mb-4">Step 1: Data Collection</h3>
+          <p>Gather email datasets and preprocess text using tokenization and stemming.</p>
+        </div>
+        <div>
+          <h3 class="text-2xl font-semibold mb-4">Step 2: Model Training</h3>
+          <p>Train ML models on labeled data to learn spam patterns.</p>
+        </div>
+        <div>
+          <h3 class="text-2xl font-semibold mb-4">Step 3: Prediction</h3>
+          <p>Apply the model to new emails for classification.</p>
+        </div>
+        <div>
+          <h3 class="text-2xl font-semibold mb-4">Step 4: Continuous Learning</h3>
+          <p>Update models with user feedback for improved accuracy.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+<br>
+<br>
+<!-- Spam Detector Section -->
+<section id="detector" class="min-h-screen flex justify-start px-20 py-20" style="background-color: darkgray;">
+<div class="">
+    <h1 class="text-center text-blue-800 font-bold text-4xl -mt-8 mb-12">
+                    Result Prediction</h1>
+    <div class="max-w-6xl mx-auto flex flex-wrap justify-between gap-10">
+      
+      <!-- Left side labels -->
+      <div class="flex-1 min-w-[250px]">
+        <h2 class="text-5xl font-bold text-black mb-4">Spam vs Ham</h2>
+        <p class="text-lg mb-4 text-black">Check your emails instantly with our AI-powered tool.</p>
+        
+        <div class="text-blue-800 font-bold leading-8 text-xl text-left space-y-4">
+        <p>Congratulations! You have been selected to receive a $500 gift card. Click here to claim it now!</p>
+          <p>Urgent! Your bank account has been compromised. Verify your details immediately to avoid closure.</p>
+          <p>Urgent! Your bank account has been compromised. Verify your details immediately to avoid closure.</p>
+          <p>Urgent! Your bank account has been compromised. Verify your details immediately to avoid closure.</p>
+          <p>Hi Sarah, can we reschedule our meeting to 3 PM tomorrow?</p>
+          <p>Don't forget to submit your assignment by Friday. Let me know if you need help.</p>
+          <p>Don't forget to submit your assignment by Friday. Let me know if you need help.</p>
+          <p>Don't forget to submit your assignment by Friday. Let me know if you need help.</p>
+        </div>
+
+        <!-- Dataset button -->
+        <div class="mt-6">
+          <a href="https://github.com/Abhinav1901498/Spam-Email-Detection/tree/main/spam.csv" 
+             target="_blank"
+             class="inline-block bg-blue-700 hover:bg-yellow-600 text-white font-semibold py-3 px-12 rounded-lg transition">
+            Open Dataset
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+ <!-- Right side container -->
+    <div class="flex-1 min-w-[300px] text-center mt-20">
+      <div class="max-w-md mx-auto bg-white/5 backdrop-blur-md rounded-2xl p-20 mt-5 shadow-lg">
+        <h2 class="text-2xl font-bold text-black mb-6">Check Email for Spam</h2>
+        <form method="POST">
+          <textarea name="email_text" placeholder="Enter your email text here..." class="w-80 h-40 p-3 text-lg rounded-lg bg-gary-400 text-black mb-4 focus:bg-white outline-none"></textarea>
+          <button type="submit" class="px-6 py-3 bg-blue-500 rounded-lg font-bold text-black hover:bg-yellow-600 hover:-translate-y-1 transition">Check Spam</button>
+        </form>
         {% if result %}
-        <div class="result {% if result=='Spam' %}spam{% else %}ham{% endif %}">
-            Result: {{ result }}
+        <div class="mt-4 text-xl font-bold p-4 rounded-lg bg-black {% if result=='Spam' %} text-yellow-600 {% else %} text-blue-500 {% endif %}">
+          Result: {{ result }}
         </div>
         {% endif %}
+      </div>
     </div>
+  </div>
+</section>
+
+  <!--contact section-->
+<section id="contact" class="bg-blue-400 py-16 px-6">
+  <div> 
+    <h1 class="text-center text-5xl font-bold text-black"> 
+      Contact
+    </h1>
+</div>
+   <br>
+   <br>
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row gap-20">
+
+    <!-- Contact Info Card -->
+    <div class="bg-gray-800 text-white rounded-xl shadow-lg p-6 w-full md:w-1/3">
+  <h2 class="text-3xl font-bold mb-4 text-center">Contact Us</h2>
+   
+
+  <!-- Buttons Section -->
+<div class="flex flex-col mt-6 space-y-4">
+  <!-- GitHub -->
+  <a href="https://github.com/Abhinav1901498" 
+  target="_blank" 
+  class="flex items-center bg-gray-700 hover:bg-gray-600 rounded-xl px-6 py-5 transition w-full">
+     GitHub</a>
+
+  <!-- LinkedIn -->
+  <a href="https://linkedin.com/in/abhinav-pandey-b499532b5" 
+  target="_blank" 
+  class="flex items-center bg-blue-700 hover:bg-blue-600 rounded-xl px-6 py-5 transition w-full">
+     LinkedIn</a>
+
+  <!-- WhatsApp -->
+  <a href="https://wa.me/9580363258" 
+  target="_blank" 
+  class="flex items-center bg-green-600 hover:bg-green-500 rounded-xl px-6 py-5 transition w-full">
+     WhatsApp</a>
+
+  <!-- Email -->
+  <a href="mailto:pandeyabhi3150@gmail.com" 
+  class="flex items-center bg-red-600 hover:bg-red-500 rounded-xl px-6 py-5 transition w-full">
+     Email</a>
+    <div class="flex space-x-8 mt-4 px-12">
+        <a href="https://wa.me/1234567890" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" class="w-6 h-6 hover:scale-110 transition" alt="WhatsApp">
+        </a>
+        <a href="https://facebook.com" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" class="w-6 h-6 hover:scale-110 transition" alt="Facebook">
+        </a>
+        <a href="https://linkedin.com" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" class="w-6 h-6 hover:scale-110 transition" alt="LinkedIn">
+        </a>
+        <a href="https://github.com" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" class="w-6 h-6 hover:scale-110 transition" alt="GitHub">
+        </a>
+      </div>
+  </div>
+</div>
+         <!-- Contact Form Card -->
+    <div class="bg-white rounded-xl shadow-lg p-6 w-full md:w-2/3">
+      <h2 class="text-3xl font-bold mb-4 text-gray-700 text-center">Get in Touch</h2>
+      <p class="text-gray-500 mb-4 text-xl text-center">Feel free to drop us a line below!</p>
+      <form class="space-y-4">
+        <input type="text" placeholder="Name" class="w-full p-3 rounded-md border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-400">
+        <input type="email" placeholder="Email" class="w-full p-3 rounded-md border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-400">
+        <textarea placeholder="Message" class="w-full p-3 rounded-md border border-gray-200 h-32 resize-none focus:outline-none focus:ring-2 focus:ring-blue-400"></textarea>
+        <button type="submit" class="bg-blue-500 text-white font-semibold py-2 px-6 rounded-full hover:bg-yellow-600 transition duration-200">SEND</button>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Footer -->
+<footer class="text-black px-6 py-12 bg-blue-100">
+  <div class="max-w-6xl mx-auto flex flex-wrap gap-40">
+    <!-- Left -->
+    <div class="flex">
+  <a href="https://www.linkedin.com/in/abhinav-pandey-b499532b5" target="_blank">
+    <img src="https://media.licdn.com/dms/image/v2/D5603AQH5qgfXUmMfzg/profile-displayphoto-scale_200_200/B56Zisw2puG0AY-/0/1755245148959?e=1759968000&v=beta&t=LoZiIvbdRizPXL_cGevKVDf2KvfHRcnC4WUSIUjXQFY" 
+         class="w-40 h-40 md:w-56 md:h-56 object-contain rounded-square hover:scale-105 transition-transform" 
+         alt="Logo">
+  </a>
+</div>
+
+    <!-- Right -->
+    <div class="flex-1">
+      <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
+        <div>
+          <h4 class="text-cyan-300 font-bold mb-3 text-xl">Company</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="hover:text-cyan-300 text-xl">About Us</a></li>
+            <li><a href="#" class="hover:text-cyan-300 text-xl">Services</a></li>
+            <li><a href="#" class="hover:text-cyan-300 text-xl">Community</a></li>
+            <li><a href="#" class="hover:text-cyan-300 text-xl">Testimonials</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-cyan-300 font-bold mb-3 text-xl">Resources</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="hover:text-cyan-300 text-xl">Help Center</a></li>
+            <li><a href="#" class="hover:text-cyan-300 text-xl">Documentation</a></li>
+            <li><a href="#" class="hover:text-cyan-300 text-xl">API Reference</a></li>
+            <li><a href="#" class="hover:text-cyan-300 text-xl">Guides</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-cyan-300 font-bold mb-3 text-xl">Legal</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="hover:text-cyan-300 text-xl">Terms of Service</a></li>
+            <li><a href="#" class="hover:text-cyan-300 text-xl">Privacy Policy</a></li>
+            <li><a href="#" class="hover:text-cyan-300 text-xl">Cookie Policy</a></li>
+            <li><a href="#" class="hover:text-cyan-300 text-xl">Security</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-cyan-300 font-bold mb-3 text-xl">Contact</h4>
+          <ul class="space-y-2">
+            <li><a href="mailto:support@spamdetector.com" class="hover:text-cyan-300 text-xl">Email Us</a></li>
+            <li><a href="#" class="hover:text-cyan-300 text-xl">Live Chat</a></li>
+            <li><a href="#" class="hover:text-cyan-300 text-xl">Office Locations</a></li>
+            <li><a href="#" class="hover:text-cyan-300 text-xl">Phone Support</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+     
+  <div class="text-center text-black-400 mt-8 text-xl ml-40">© 2025 Spam Email Detector. All Rights Reserved.</div>
+</footer>
 </body>
 </html>
